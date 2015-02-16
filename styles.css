@@ -1,0 +1,48 @@
+* {
+  box-sizing: inherit;
+}
+
+body {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+
+  width: 100vw;
+  height: 100vh;
+
+  overflow: hidden;
+}
+
+.pages {
+  width: 300%;
+  height: 100%;
+}
+
+.pages > * {
+  display: inline-block;
+  vertical-align: top;
+
+  width: calc(100% / 3);
+  height: 100%;
+}
+
+.container {
+  width: 85%;
+  background-color: aqua;
+  margin: 0 auto;
+}
+
+/*
+.header {
+  width: 85%;
+}
+*/
+
+.start {
+  background-color: red;
+}
+.play {
+  background-color: green;
+}
+.end {
+  background-color: blue;
+}
