@@ -5,7 +5,7 @@
   <title>RisKard</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="bower_components/reset-css/reset.css">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet/less" type="text/css" href="styles.less" />
 </head>
 
 <body>
@@ -25,16 +25,28 @@
 
   </div>
 
-  <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
-  <script type="text/javascript" src="bower_components/lodash/lodash.js"></script>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/lodash/lodash.min.js"></script>
 
-  <script type="text/javascript">
+  <script>
     window.RK = {};
   </script>
-  <script type="text/javascript" src="cards.js"></script>
-  <script type="text/javascript" src="models.js"></script>
-  <script type="text/javascript" src="util.js"></script>
-  <script type="text/javascript" src="game.js"></script>
+
+  <script src="cards.js"></script>
+  <script src="models.js"></script>
+  <script src="util.js"></script>
+
+  <script>
+    window.less = {
+      env: "development",
+      globalVars: {
+        dppx: window.RK.Util.dpToPx(1)
+      }
+    };
+  </script>
+  <script src="bower_components/less/dist/less.min.js"></script>
+
+  <script src="game.js"></script>
 </body>
 
 </html>
