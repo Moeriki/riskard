@@ -30,10 +30,25 @@ body {
   height: 100%;
 }
 
+.header {
+  width: device-width;
+  height: 224px * @dppx;
+  background-color: olive;
+  text-align: center;
+  line-height: 224px * @dppx;
+}
+
 .container {
-  width: 85%;
   background-color: aqua;
-  margin: 0 auto;
+  margin: (24px * @dppx) (16px * @dppx);
+}
+
+li {
+  line-height: 56px * @dppx;
+  text-align: center;
+  padding: 8px * @dppx;
+  border-bottom: 2px * @dppx solid;
+  box-sizing: border-box;
 }
 
 .start {
