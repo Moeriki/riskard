@@ -1,7 +1,9 @@
 (function() {
     'use strict';
 
-    RK.CardStore = [
+    // private variables
+
+    var localCardStore = [
         {
             type: 'conquer',
             continents: ['North America', 'Australia'],
@@ -34,4 +36,28 @@
         }
     ];
 
+    // private functions
+
+    function resetCard(card) {
+        card.taken = false;
+    }
+
+    RK.CardStore = {
+
+        getRandom: function() {
+            var freeCards, card;
+
+            freeCards = _.reject(localCardStore, 'taken');
+            card = freeCards[_.random(freeCards.length - 1)];
+
+            card.taken = true;
+
+            return card;
+        },
+
+        reset: function() {
+            _.each(localCardStore, resetCard);
+        }
+
+    };
 }());
