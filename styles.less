@@ -2,6 +2,7 @@
 @dist-md: 16px * @dppx;
 @dist-lg: 24px * @dppx;
 @dist-xl: 48px * @dppx;
+@increment: 80px * @dppx;
 
 * {
   box-sizing: inherit;
@@ -15,6 +16,8 @@ body {
   height: 100vh;
 
   overflow: hidden;
+
+  background-color: #F6F6F6;
 }
 
 .pages {
@@ -32,15 +35,25 @@ body {
 
 .header {
   width: device-width;
-  height: 224px * @dppx;
-  background-color: olive;
+  background-color: #333333;
   text-align: center;
-  line-height: 224px * @dppx;
+  line-height: 4 * @increment;
+  color: #e8e8e8;
+}
+
+.pageTitle {
+  width: device-width;
+  box-sizing: border-box;
+  text-align: center;
+  vertical-align: middle;
+  padding: @dist-sm;
 }
 
 .container {
-  background-color: aqua;
-  margin: (24px * @dppx) (16px * @dppx);
+  background-color: #990100;
+  margin: 0 (16px * @dppx);
+  border-radius: @dist-sm;
+  box-shadow: 0 @dist-sm @dist-md 0;
 }
 
 li {
@@ -49,10 +62,15 @@ li {
   padding: 8px * @dppx;
   border-bottom: 2px * @dppx solid;
   box-sizing: border-box;
+  color: #e8e8e8;
+}
+
+h2 {
+  line-height: @increment;
 }
 
 .start {
-  background-color: red;
+  
 }
 .play {
   background-color: green;
