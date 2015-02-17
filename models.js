@@ -2,13 +2,15 @@
     'use strict';
 
     var Player = function(name) {
-        this.id = _.uniqueId();
         this.name = name;
         this.card = null;
     };
 
+    Player.factory = function(name) {
+        return new Player(name);
+    };
+
     var Card = function(title, img) {
-        this.id = _.uniqueId();
         this.title = title;
         this.img = img;
     };
