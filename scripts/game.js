@@ -12,11 +12,24 @@
     RK.Game = {
 
         start: function() {
+            // reset data
+            RK.Game.Players.number = -1;
+            _.invoke(RK.Game.Players.list, 'forgetCard');
+            RK.CardStore.reset();
+
             RK.Util.scrollToPage(1);
         },
 
-        play: function() {
-            //RK.Game.
+        play: function(numberOfPlayers) {
+            RK.Game.Players.count = numberOfPlayers;
+
+            _(RK.Game.Players.list)
+                .initial(numberOfPlayers)
+                .each(function(player) {
+                    player.card = RK.CardStore.getRandom();
+                });
+
+            //TODO render play
 
             RK.Util.scrollToPage(2);
         },
@@ -28,6 +41,8 @@
     };
 
     RK.Game.Players = {
+
+        number: -1,
 
         list: null,
 
