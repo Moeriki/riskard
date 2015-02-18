@@ -33,7 +33,7 @@
                 player.card = RK.CardStore.getRandom();
             });
 
-            $('.play .container').empty().append(
+            $('.play .yield').empty().append(
                 playerCardsTemplate({ players: players })
             );
 

@@ -8,7 +8,7 @@
     // init views
 
     var choosePlayersTemplate = Handlebars.compile($('#players-count').html());
-    $('.start .container').append(
+    $('.start .yield').append(
         choosePlayersTemplate({ playerNumbers: _.range(2, 7) })
     );
 
