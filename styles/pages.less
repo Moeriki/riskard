@@ -9,6 +9,14 @@ body {
   background-color: #F6F6F6;
 }
 
+h1 {
+  line-height: @increment;
+  font-size: @increment;
+  font-variant: small-caps;
+  color: #e8e8e8;
+  margin: @increment 0 0 @increment;
+}
+
 .pages {
   width: 300%;
   height: 100%;
@@ -22,20 +30,29 @@ body {
   height: 100%;
 }
 
+.header {
+  width: device-width;
+  background-color: #333333;
+  height: 4 * @increment;
+  padding: @dist-xl;
+  box-shadow: 0 0 (2 * @dist-sm) 0;
+}
+
+#back {
+  width: @dist-xl;
+  height: @dist-xl;
+}
+
+#back_icon {
+  width: 100%;
+}
+
 .container {
   margin: 0 (16px * @dppx);
   @media (min-width: 700px) {
     max-width: 690px;
     margin: 0 auto;
   }
-}
-
-.header {
-  width: device-width;
-  background-color: #333333;
-  text-align: center;
-  line-height: 4 * @increment;
-  color: #e8e8e8;
 }
 
 .start {}
