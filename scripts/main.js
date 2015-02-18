@@ -8,9 +8,9 @@
     // init views
 
     var choosePlayersTemplate = Handlebars.compile($('#players-count').html());
-    $('.start .container').append(choosePlayersTemplate({
-        playerNumbers: _.range(2, 7)
-    }));
+    $('.start .container').append(
+        choosePlayersTemplate({ playerNumbers: _.range(2, 7) })
+    );
 
     // register events
 

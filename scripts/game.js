@@ -1,6 +1,10 @@
 (function() {
     'use strict';
 
+    // private variables
+
+    var playerCardsTemplate = Handlebars.compile($('#player-cards').html())
+
     // private functions
 
     function defaultPlayerName(nr) {
@@ -21,15 +25,17 @@
         },
 
         play: function(numberOfPlayers) {
-            RK.Game.Players.count = numberOfPlayers;
+            var players = _.initial(RK.Game.Players.all, numberOfPlayers);
 
-            _(RK.Game.Players.list)
-                .initial(numberOfPlayers)
-                .each(function(player) {
-                    player.card = RK.CardStore.getRandom();
-                });
+            RK.Game.Players.playing = players;
 
-            //TODO render play
+            _.each(players, function(player) {
+                player.card = RK.CardStore.getRandom();
+            });
+
+            $('.play .container').empty().append(
+                playerCardsTemplate({ players: players })
+            );
 
             RK.Util.scrollToPage(2);
         },
@@ -42,9 +48,9 @@
 
     RK.Game.Players = {
 
-        number: -1,
+        all: null,
 
-        list: null,
+        playing: null,
 
         load: function() {
             // Load player names from local storage
@@ -57,20 +63,22 @@
                 players = _.range(1, 7).map(defaultPlayerName);
             }
 
-            return (this.list = players.map(RK.Player.factory));
+            return (RK.Game.Players.all = players.map(RK.Player.factory));
         },
 
         save: function() {
+            var allPlayers = RK.Game.Players.all;
+
             if (!window.localStorage) {
                 console.warn('cannot save players list without localstorage');
                 return;
             }
-            if (!this.list || !this.list.length) {
+            if (!allPlayers || !allPlayers.length) {
                 console.error('cannot save empty players list');
                 return;
             }
 
-            window.localStorage.setItem('players', JSON.stringify(_.pluck(this.list, 'name')));
+            window.localStorage.setItem('players', JSON.stringify(_.pluck(allPlayers, 'name')));
         }
 
     };

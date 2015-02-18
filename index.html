@@ -43,8 +43,12 @@
     </ul>
   </template>
 
-  <template id="player-card" type="text/x-handlebars-template">
-    <div class="player-card">
+  <template id="player-cards" type="text/x-handlebars-template">
+    <div class="player-cards">
+      {{#each players}}
+        <div class="player-card">
+        </div>
+      {{/each}}
     </div>
   </template>
 
