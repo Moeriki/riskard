@@ -1,8 +1,0 @@
-* {
-  box-sizing: inherit;
-}
-
-body {
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-}
