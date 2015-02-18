@@ -5,7 +5,9 @@
   <title>RisKard</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="bower_components/reset-css/reset.css">
-  <link rel="stylesheet/less" type="text/css" href="styles.less" />
+  <link rel="stylesheet" href="styles/generic.css">
+  <link rel="stylesheet/less" type="text/css" href="styles/pages.less" />
+  <link rel="stylesheet/less" type="text/css" href="styles/start.less" />
 </head>
 
 <body>
@@ -19,19 +21,36 @@
       <div class="pageTitle">
         <h2># Players</h2>
       </div>
-      <div class="container">
-        <ul class="choose-players"></ul>
-      </div>
+      <div class="container"></div>
     </div><!--
 
-    --><div class="play"></div><!--
+    --><div class="play">
+      <div class="header">
+        <h1>riskard</h1>
+      </div>
+      <div class="container"></div>
+    </div><!--
 
     --><div class="end"></div>
 
   </div>
 
+  <template id="players-count" type="text/x-handlebars-template">
+    <ul class="choose-players">
+      {{#each playerNumbers}}
+        <li>{{this}}</li>
+      {{/each}}
+    </ul>
+  </template>
+
+  <template id="player-card" type="text/x-handlebars-template">
+    <div class="player-card">
+    </div>
+  </template>
+
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/lodash/lodash.min.js"></script>
+  <script src="bower_components/handlebars/handlebars.min.js"></script>
 
   <script>
     window.RK = {};

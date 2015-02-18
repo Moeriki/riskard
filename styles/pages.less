@@ -1,0 +1,46 @@
+@import '_variables.less';
+
+body {
+  width: 100vw;
+  height: 100vh;
+
+  overflow: hidden;
+
+  background-color: #F6F6F6;
+}
+
+.pages {
+  width: 300%;
+  height: 100%;
+}
+
+.pages > * {
+  display: inline-block;
+  vertical-align: top;
+
+  width: calc(100% / 3);
+  height: 100%;
+}
+
+.container {
+  background-color: #990100;
+  margin: 0 (16px * @dppx);
+  border-radius: @dist-sm;
+  box-shadow: 0 @dist-sm @dist-md 0;
+}
+
+.header {
+  width: device-width;
+  background-color: #333333;
+  text-align: center;
+  line-height: 4 * @increment;
+  color: #e8e8e8;
+}
+
+.start {}
+.play {
+  background-color: green;
+}
+.end {
+  background-color: blue;
+}

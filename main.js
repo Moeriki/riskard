@@ -7,10 +7,9 @@
 
     // init views
 
-    $('.start .choose-players').append(
-        _.range(2, 7).map(function(nr) {
-            return '<li>' + nr + '</li>';
-        })
-    );
+    var choosePlayersTemplate = Handlebars.compile($('#players-count').html());
+    $('.start .container').append(choosePlayersTemplate({
+        playerNumbers: _.range(2, 7)
+    }));
 
 }());
