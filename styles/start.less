@@ -8,13 +8,22 @@
     padding: @dist-sm;
   }
 
+  ul {
+    background-color: #990100;
+    border-radius: @dist-sm;
+    box-shadow: 0 @dist-sm @dist-md 0;
+  }
+
   li {
     line-height: 56px * @dppx;
     text-align: center;
     padding: 8px * @dppx;
-    border-bottom: 2px * @dppx solid;
     color: #e8e8e8;
     cursor: pointer;
+  }
+
+  li + li {
+    border-top: 2px * @dppx solid;
   }
 
   h2 {
