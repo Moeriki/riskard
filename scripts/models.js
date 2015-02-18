@@ -10,6 +10,10 @@
         return new Player(name);
     };
 
+    Player.prototype.forgetCard = function() {
+        this.card = null;
+    };
+
     var Card = function(title, img) {
         this.title = title;
         this.img = img;
