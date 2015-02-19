@@ -9,6 +9,7 @@
   <link rel="stylesheet/less" type="text/css" href="styles/generic.less">
   <link rel="stylesheet/less" type="text/css" href="styles/pages.less" />
   <link rel="stylesheet/less" type="text/css" href="styles/start.less" />
+  <link rel="stylesheet/less" type="text/css" href="styles/play.less" />
 </head>
 
 <body>
@@ -48,12 +49,14 @@
   </template>
 
   <template id="player-cards" type="text/x-handlebars-template">
-    <div class="player-cards">
+    <ul class="player-cards">
       {{#each players}}
-        <div class="player-card">
-        </div>
+        <li class="player-card">
+          <div class="front face">FRONT</div>
+          <div class="back face">BACK</div>
+        </li>
       {{/each}}
-    </div>
+    </ul>
   </template>
 
   <script src="bower_components/jquery/dist/jquery.min.js"></script>

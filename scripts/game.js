@@ -5,6 +5,8 @@
 
     var playerCardsTemplate = Handlebars.compile($('#player-cards').html())
 
+    var $openCardPlaceHolder = null;
+
     // private functions
 
     function defaultPlayerName(nr) {
@@ -41,8 +43,42 @@
         },
 
         end: function() {
+            //TODO render end
+
             RK.Util.scrollToPage(3);
-        }
+        },
+
+        openMissionCard: function(playerNumber) {
+            var $card, rect, $cardContainer, cardContainerRect;
+
+            $cardContainer = $('.play .player-cards');
+            $card = $('.play .player-card').eq(playerNumber - 1);
+            cardContainerRect = $cardContainer[0].getBoundingClientRect();
+            rect = $card[0].getBoundingClientRect();
+
+            // close other card
+            if ($openCardPlaceHolder) {
+                $openCardPlaceHolder.remove();
+                // $openCardPlaceHolder = null;
+            }
+
+            $card.siblings('.open')
+                .removeClass('open')
+                .removeAttr('style');
+
+            //TODO position element absolutely centered
+            // $openCardPlaceHolder = $('<li class="spaceholder"></li>');
+            // $card.before($openCardPlaceHolder);
+
+            // $card.css({
+            //     position: 'absolute',
+            //     left: rect.left - cardContainerRect.left,
+            //     top: rect.top - cardContainerRect.top,
+            //     margin: 0,
+            // });
+
+            $card.addClass('open');
+        },
 
     };
 

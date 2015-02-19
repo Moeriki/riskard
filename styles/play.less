@@ -1,0 +1,56 @@
+@import '_variables';
+
+.play {
+
+  .player-cards {
+    perspective: 1000;
+
+    li {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      margin: 8px;
+    }
+  }
+
+  .player-card {
+    position: relative;
+    transform-style: preserve-3d;
+    transition-property: transform left top;
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
+  }
+
+  .face {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    backface-visibility: hidden;
+    transition: transform 0.3s linear;
+  }
+
+  .front {
+    cursor: pointer;
+    background: red;
+  }
+
+  .back {
+    transform: rotateY(180deg) scale(0.2);
+    background: blue;
+    width: 500px;
+    height: 500px;
+  }
+
+  .player-card.open {
+    z-index: 10;
+    transform: rotateY(180deg);
+
+    .front {
+      transform: scale(5) translate(250px, 250px);
+    }
+    .back {
+      transform: rotateY(180deg) scale(1) translate(250px, 250px);
+    }
+  }
+
+}
