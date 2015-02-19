@@ -14,14 +14,14 @@
 
     // register events
 
+    $("#back").click(function() {
+        RK.Game.start();
+    })
+
     $('.start').on('click', '.choose-players', function(e) {
         var numberOfPlayers = parseInt($(e.target).html(), 10);
         RK.Game.play(numberOfPlayers);
     });
 
-    $("#back").click(function() {
-        RK.Game.start();
-    })
-    
 
 }());
