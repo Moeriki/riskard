@@ -36,6 +36,4 @@
         RK.Game.end();
     });
 
->>>>>>> refs/remotes/origin/master
-
 }());
