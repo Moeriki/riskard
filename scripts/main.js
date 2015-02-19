@@ -28,4 +28,14 @@
         RK.Game.openMissionCard(playerNumber);
     });
 
+    $(".leftAction").click(function() {
+        RK.Game.start();
+    });
+
+    $("#end_session").click(function() {
+        RK.Game.end();
+    });
+
+>>>>>>> refs/remotes/origin/master
+
 }());
