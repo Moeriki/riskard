@@ -48,6 +48,11 @@
             var freeCards, card;
 
             freeCards = _.reject(localCardStore, 'taken');
+            if (freeCards.length === 0) {
+                console.error("no cards left");
+                return null;
+            }
+
             card = freeCards[_.random(freeCards.length - 1)];
 
             card.taken = true;

@@ -19,4 +19,9 @@
         RK.Game.play(numberOfPlayers);
     });
 
+    $("#back").click(function() {
+        RK.Game.start();
+    })
+    
+
 }());
