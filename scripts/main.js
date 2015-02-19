@@ -28,11 +28,11 @@
         RK.Game.openMissionCard(playerNumber);
     });
 
-    $(".leftAction").click(function() {
+    $(".header").on("click", ".leftAction", function() {
         RK.Game.start();
     });
 
-    $("#end_session").click(function() {
+    $(".header").on("click", "#end_session", function() {
         RK.Game.end();
     });
 
