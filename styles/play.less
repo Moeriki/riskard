@@ -7,14 +7,15 @@
 
     li {
       display: inline-block;
-      width: 100px;
-      height: 100px;
-      margin: 8px;
+      position: relative;
+      width: 4 * @increment;
+      height: 5.333 * @increment;
+      margin: @dist-md;
+      text-align: center;
     }
   }
 
   .player-card {
-    position: relative;
     transform-style: preserve-3d;
     transition-property: transform left top;
     transition-duration: 0.3s;
@@ -31,7 +32,8 @@
 
   .front {
     cursor: pointer;
-    background: red;
+    background: #990100;
+    width: 100%;
   }
 
   .back {
@@ -39,6 +41,10 @@
     background: blue;
     width: 500px;
     height: 500px;
+  }
+
+  .container {
+    margin-top: @increment;
   }
 
   .player-card.open {
