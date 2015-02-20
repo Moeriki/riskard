@@ -3,7 +3,7 @@
 
     // private variables
 
-    var playerCardsTemplate = Handlebars.compile($('#player-cards').html())
+    var playerCardsTemplate = Handlebars.compile($('#player-cards').html());
 
     var $openCardPlaceHolder = null;
 
@@ -43,7 +43,7 @@
         },
 
         end: function() {
-            //TODO render end
+            // TODO render end
 
             RK.Util.scrollToPage(3);
         },
@@ -99,7 +99,9 @@
                 players = _.range(1, 7).map(defaultPlayerName);
             }
 
-            return (RK.Game.Players.all = players.map(RK.Player.factory));
+            RK.Game.Players.all = players.map(RK.Player.factory);
+
+            return RK.Game.Players.all;
         },
 
         save: function() {

@@ -1,18 +1,27 @@
 (function() {
     'use strict';
 
-    var ppi = 96;
-    $(function() {
-        var $body, $inch;
+    // consts
 
-        $body = $('body');
-        $inch = $('<div style="width:1in"></div>');
+    var DEFAULT_PPI = 96;
 
-        $body.append($inch);
-        ppi = $inch.width() || ppi;
+    // private variables
 
-        $inch.remove();
-    });
+    var ppi, currentPage;
+
+    // calculate PPI
+
+    (function tryToFindPPI() {
+        var inch = document.createElement('div');
+        inch.style.width = '1in';
+        document.body.appendChild(inch);
+
+        ppi = inch.getBoundingClientRect().width || DEFAULT_PPI;
+
+        inch.remove();
+    }());
+
+    // util functions
 
     RK.Util = {
 
@@ -20,15 +29,32 @@
             return dp * ppi / 160;
         },
 
-        scrollToPage: function(nr) {
+        scrollToPage: function(nr, doJump) {
             var $page, offsetLeft;
 
             $page = $('.pages > *').eq(nr - 1);
             offsetLeft = $page.offset().left;
 
-            $('body').animate({ scrollLeft: offsetLeft });
+            if (doJump) {
+                $('body').scrollLeft(offsetLeft);
+            } else {
+                $('body').animate({ scrollLeft: offsetLeft });
+            }
+
+            currentPage = nr;
         }
 
     };
+
+    // go to current page
+
+    currentPage = 1;
+    _.delay(function() {
+        RK.Util.scrollToPage(currentPage, true);
+    }, 500);
+
+    $(window).on('resize', _.throttle(function() {
+        RK.Util.scrollToPage(currentPage, true);
+    }, 50));
 
 }());
