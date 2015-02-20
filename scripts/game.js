@@ -1,16 +1,53 @@
 (function() {
     'use strict';
 
+    // consts
+
+    var PRESSURE = 5;
+
     // private variables
 
     var playerCardsTemplate = Handlebars.compile($('#player-cards').html());
 
-    var $openCardPlaceHolder = null;
+    var $container, $overlay, containerRect, flipper;
 
     // private functions
 
     function defaultPlayerName(nr) {
         return 'Player ' + nr;
+    }
+
+    function absolutePositionCard(cardNumber) {
+        if (flipper) {
+            if (flipper.cardNumber !== cardNumber) {
+                throw new Error('already flipping other card');
+            }
+            return;
+        }
+
+        containerRect = $container[0].getBoundingClientRect();// TODO recalculate on resize
+
+        flipper = {};
+
+        flipper.cardNumber = cardNumber;
+        flipper.$card = $container.children().eq(cardNumber - 1);
+        flipper.cardRect = flipper.$card[0].getBoundingClientRect();
+        flipper.$holder = $('<li class="spaceholder"></li>');
+
+        flipper.$card.before(flipper.$holder);
+
+        flipper.$card.data({
+            left: flipper.cardRect.left - containerRect.left,
+            top: flipper.cardRect.top - containerRect.top,
+        });
+
+        flipper.$card.css({
+            position: 'absolute',
+            zIndex: 15,
+            left: flipper.cardRect.left - containerRect.left,
+            top: flipper.cardRect.top - containerRect.top,
+            margin: 0,
+        });
     }
 
     // Game
@@ -39,6 +76,10 @@
                 playerCardsTemplate({ players: players })
             );
 
+            $container = $('.play .player-cards');
+            containerRect = $container[0].getBoundingClientRect();// TODO recalculate on resize
+            $overlay = $('.play .overlay');
+
             RK.Util.scrollToPage(2);
         },
 
@@ -48,70 +89,57 @@
             RK.Util.scrollToPage(3);
         },
 
-        openMissionCard: function(playerNumber) {
-            var $cardContainer, $overlay, $card,
-                rect, cardContainerRect;
+        pressMissionCard: function(playerNumber, e) {
+            var pressure = PRESSURE;
 
-            if ($openCardPlaceHolder) {
-                console.warn('still animating close, ignore');
+            absolutePositionCard(playerNumber);
+            if (!flipper) {
                 return;
             }
 
-            $cardContainer = $('.play .player-cards');
-            $overlay = $('.play .overlay');
-            $card = $cardContainer.children().eq(playerNumber - 1);
+            if (e.offsetY > flipper.$card.height() / 2) {
+                pressure *= -1;
+            }
 
-            cardContainerRect = $cardContainer[0].getBoundingClientRect();
-            rect = $card[0].getBoundingClientRect();
+            flipper.$card.animate({
+                transform: 'rotateX(' + pressure + 'deg)'
+            }, { duration: 50 });
+        },
 
-            $openCardPlaceHolder = $('<li class="spaceholder"></li>');
-            $card.before($openCardPlaceHolder);
-
-            $card.data({
-                left: rect.left - cardContainerRect.left,
-                top: rect.top - cardContainerRect.top,
-            });
-
-            $card.css({
-                position: 'absolute',
-                zIndex: 15,
-                left: rect.left - cardContainerRect.left,
-                top: rect.top - cardContainerRect.top,
-                margin: 0,
-            });
+        openMissionCard: function(playerNumber) {
+            absolutePositionCard(playerNumber);
+            if (!flipper) {
+                return;
+            }
 
             $overlay.css({
                 display: 'block',
-                left: -cardContainerRect.left,
-                top: -cardContainerRect.top,
+                left: -containerRect.left,
+                top: -containerRect.top,
             }).addClass('show');
 
-            $card.addClass('open').animate({
-                top: (window.innerHeight - $card.height()) / 2 - cardContainerRect.top,
-                left: (window.innerWidth - $card.width()) / 2 - cardContainerRect.left,
+            flipper.$card.stop().addClass('open').animate({
+                top: (window.innerHeight - flipper.$card.height()) / 2 - containerRect.top,
+                left: (window.innerWidth - flipper.$card.width()) / 2 - containerRect.left,
                 transform: 'rotateY(180deg) scale(2)'
             });
         },
 
         closeMissionCard: function() {
-            var $card, $overlay;
-
-            $card = $('.play .player-card.open');
-            if (!$card.length) {
+            if (!flipper) {
                 return;
             }
 
-            $overlay = $('.play .overlay');
-
-            $card.stop().removeClass('open').animate({
-                left: $card.data('left'),
-                top: $card.data('top'),
-                transform: 'rotateY(0)  scale(1)'
+            flipper.$card.stop().removeClass('open').animate({
+                left: flipper.$card.data('left'),
+                top: flipper.$card.data('top'),
+                transform: 'rotateY(0) scale(1)'
             }, function() {
-                $openCardPlaceHolder.remove();
-                $openCardPlaceHolder = null;
+                flipper.$holder.remove();
 
-                $card.removeAttr('style');
+                flipper.$card.removeAttr('style');
+
+                flipper = null;
             });
 
             $overlay.removeClass('show');

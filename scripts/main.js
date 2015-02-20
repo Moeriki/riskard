@@ -1,6 +1,12 @@
 (function() {
     'use strict';
 
+    // private functions
+
+    function cardNumberFromElement(el) {
+        return $(el).closest('.player-card').index('.player-card') + 1;
+    }
+
     // init game data
 
     RK.Game.Players.load();
@@ -19,9 +25,12 @@
         RK.Game.play(numberOfPlayers);
     });
 
+    $('.play').on('mousedown', '.player-card:not(.open)', function(e) {
+        RK.Game.pressMissionCard(cardNumberFromElement(e.target), e);
+    });
+
     $('.play').on('click', '.player-card:not(.open)', function(e) {
-        var playerNumber = $(e.target).closest('.player-card').index() + 1;
-        RK.Game.openMissionCard(playerNumber);
+        RK.Game.openMissionCard(cardNumberFromElement(e.target));
     });
 
     $('.play').on('click', '.overlay, .face.back', RK.Game.closeMissionCard);
