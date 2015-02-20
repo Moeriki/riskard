@@ -1,0 +1,26 @@
+@import '_variables';
+
+.end {
+	background: #F6F6F6;
+
+	.player-cards-end {
+		perspective: 1000;
+
+		li {
+      display: inline-block;
+      position: relative;
+      width: 4 * @increment;
+      height: 5.333 * @increment;
+      margin: @dist-md;
+      text-align: center;
+    	}
+	}
+}
+
+.container .yield {
+  margin: 0 (16px * @dppx);
+  @media (min-width: 700px) {
+    max-width: 690px;
+    margin: 0 auto;
+  }
+}
