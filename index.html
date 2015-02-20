@@ -58,6 +58,7 @@
   </template>
 
   <template id="player-cards" type="text/x-handlebars-template">
+    <div class="overlay"></div>
     <ul class="player-cards">
       {{#each players}}
         <li class="player-card boxxed">
@@ -69,6 +70,8 @@
   </template>
 
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/gsap/src/minified/TweenMax.min.js"></script>
+  <script src="bower_components/gsap/src/minified/jquery.gsap.min.js"></script>
   <script src="bower_components/lodash/lodash.min.js"></script>
   <script src="bower_components/handlebars/handlebars.min.js"></script>
 

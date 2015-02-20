@@ -2,24 +2,44 @@
 
 .play {
 
-  .player-cards {
+  .container {
     perspective: 1000;
+    margin-top: @increment;
+  }
 
+  .overlay {
+    position: absolute;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(33, 33, 33, 0.8);
+
+    opacity: 0;
+    display: none;
+
+    transition: opacity 0.3s linear;
+
+    &.show {
+      opacity: 1;
+    }
+  }
+
+  .player-cards {
     li {
       display: inline-block;
+
       position: relative;
-      width: 4 * @increment;
-      height: 5.333 * @increment;
+      width: @card-width;
+      height: @card-height;
       margin: @dist-md;
+
       text-align: center;
     }
   }
 
   .player-card {
     transform-style: preserve-3d;
-    transition-property: transform left top;
-    transition-duration: 0.3s;
-    transition-timing-function: linear;
   }
 
   .face {
@@ -27,36 +47,21 @@
     width: inherit;
     height: inherit;
     backface-visibility: hidden;
-    transition: transform 0.3s linear;
+    cursor: pointer;
   }
 
   .front {
-    cursor: pointer;
-    background: #990100;
     width: 100%;
+    background: #990100;
   }
 
   .back {
-    transform: rotateY(180deg) scale(0.2);
-    background: #dbd1b4;
-    width: 10 * @increment;
-    height: 13.3333 * @increment;
+    width: 2 * @card-width;
+    height: 2 * @card-height;
+
+    transform: rotateY(180deg) scale(0.5);
+    transform-origin: 128px 0;
+
+    background: #DBD1B4;
   }
-
-  .container {
-    margin-top: @increment;
-  }
-
-  .player-card.open {
-    z-index: 10;
-    transform: rotateY(180deg);
-
-    .front {
-      transform: scale(5) translate(250px, 250px);
-    }
-    .back {
-      transform: rotateY(180deg) scale(1) translate(250px, 250px);
-    }
-  }
-
 }

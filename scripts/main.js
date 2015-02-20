@@ -24,6 +24,8 @@
         RK.Game.openMissionCard(playerNumber);
     });
 
+    $('.play').on('click', '.overlay, .face.back', RK.Game.closeMissionCard);
+
     $('.header').on('click', '.leftAction', function() {
         RK.Game.start();
     });
