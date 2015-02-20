@@ -4,7 +4,7 @@
     // consts
 
     var PRESSURE_ROTATE = 3;
-    var PRESSURE_SCALE = 0.03;
+    var PRESSURE_SCALE = 0.02;
 
     // private variables
 
@@ -105,10 +105,18 @@
             rotY = -PRESSURE_ROTATE + (2 * PRESSURE_ROTATE / height * e.offsetX);
             scale = 1 - (PRESSURE_SCALE - ((Math.abs(rotX) + Math.abs(rotY)) / 2) / PRESSURE_ROTATE * PRESSURE_SCALE);
 
+            // flipper.$card.animate({
+            //     boxShadow: '0 0 0 #333',
+            //     transform: 'translateY(' + RK.Util.dpToPx(8) + 'px)',
+            // });
+
             flipper.$card
                 .css('transformOrigin', (width - e.offsetX) + 'px ' + (height - e.offsetY) + 'px')
                 .animate({
-                    transform: 'scale(' + scale + ') rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg)'
+                    transform: '\
+                        scale(' + scale + ') \
+                        rotateX(' + rotX + 'deg) \
+                        rotateY(' + rotY + 'deg)'
                 }, { duration: 50 });
         },
 
