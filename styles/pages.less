@@ -15,6 +15,7 @@ h1 {
   font-variant: small-caps;
   color: #e8e8e8;
   margin: (@increment + @dist-xl) 0 0 @increment;
+  position: fixed;
 }
 
 .pages {
@@ -31,7 +32,7 @@ h1 {
 }
 
 .header {
-  width: device-width;
+  width: 100%;
   background-color: #333333;
   height: 4 * @increment;
   padding: @dist-xl;
@@ -39,14 +40,18 @@ h1 {
 }
 
 .leftAction {
-  width: @dist-xl;
+  width: 3 * @increment;
   height: @dist-xl;
   float: left;
+  color: #e8e8e8;
+  font-variant: small-caps;
+  font-size: @increment / 2;
+  line-height: @dist-xl;
+  cursor: pointer;
 }
 
 #back_icon {
-  width: 100%;
-  cursor: pointer;
+  width: @dist-xl;
 }
 
 #end_session {
@@ -54,7 +59,7 @@ h1 {
   height: @dist-xl;
   float: right;
   cursor: pointer;
-  color: white;
+  color: #e8e8e8;
   text-align: center;
   font-variant: small-caps;
   font-size: @increment/2;
@@ -67,12 +72,4 @@ h1 {
     max-width: 690px;
     margin: 0 auto;
   }
-}
-
-.start {}
-.play {
-  background-color: #F6F6F6;
-}
-.end {
-  background-color: blue;
 }
