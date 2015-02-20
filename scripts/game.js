@@ -64,7 +64,6 @@
             cardContainerRect = $cardContainer[0].getBoundingClientRect();
             rect = $card[0].getBoundingClientRect();
 
-            // TODO position element absolutely centered
             $openCardPlaceHolder = $('<li class="spaceholder"></li>');
             $card.before($openCardPlaceHolder);
 
