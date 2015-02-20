@@ -27,7 +27,7 @@
         },
 
         play: function(numberOfPlayers) {
-            var players = _.initial(RK.Game.Players.all, numberOfPlayers);
+            var players = _.take(RK.Game.Players.all, numberOfPlayers);
 
             RK.Game.Players.playing = players;
 
