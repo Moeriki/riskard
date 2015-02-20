@@ -3,7 +3,8 @@
 
     // consts
 
-    var PRESSURE = 5;
+    var PRESSURE_ROTATE = 3;
+    var PRESSURE_SCALE = 0.03;
 
     // private variables
 
@@ -90,20 +91,25 @@
         },
 
         pressMissionCard: function(playerNumber, e) {
-            var pressure = PRESSURE;
+            var width, height, rotX, rotY, scale;
 
             absolutePositionCard(playerNumber);
             if (!flipper) {
                 return;
             }
 
-            if (e.offsetY > flipper.$card.height() / 2) {
-                pressure *= -1;
-            }
+            width = flipper.$card.width();
+            height = flipper.$card.height();
 
-            flipper.$card.animate({
-                transform: 'rotateX(' + pressure + 'deg)'
-            }, { duration: 50 });
+            rotX = +PRESSURE_ROTATE - (2 * PRESSURE_ROTATE / width * e.offsetY);
+            rotY = -PRESSURE_ROTATE + (2 * PRESSURE_ROTATE / height * e.offsetX);
+            scale = 1 - (PRESSURE_SCALE - ((Math.abs(rotX) + Math.abs(rotY)) / 2) / PRESSURE_ROTATE * PRESSURE_SCALE);
+
+            flipper.$card
+                .css('transformOrigin', (width - e.offsetX) + 'px ' + (height - e.offsetY) + 'px')
+                .animate({
+                    transform: 'scale(' + scale + ') rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg)'
+                }, { duration: 50 });
         },
 
         openMissionCard: function(playerNumber) {
@@ -118,11 +124,15 @@
                 top: -containerRect.top,
             }).addClass('show');
 
-            flipper.$card.stop().addClass('open').animate({
-                top: (window.innerHeight - flipper.$card.height()) / 2 - containerRect.top,
-                left: (window.innerWidth - flipper.$card.width()) / 2 - containerRect.left,
-                transform: 'rotateY(180deg) scale(2)'
-            });
+            flipper.$card
+                .stop()
+                .addClass('open')
+                .css('transformOrigin', '')
+                .animate({
+                    top: (window.innerHeight - flipper.$card.height()) / 2 - containerRect.top,
+                    left: (window.innerWidth - flipper.$card.width()) / 2 - containerRect.left,
+                    transform: 'rotateY(180deg) scale(2)'
+                });
         },
 
         closeMissionCard: function() {
