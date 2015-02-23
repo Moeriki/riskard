@@ -3,7 +3,7 @@
 .end {
 	background: #F6F6F6;
 
-	.player-cards-end {
+	.player-missions {
 		perspective: 1000;
 
 		li {
@@ -13,14 +13,19 @@
       height: 5.333 * @increment;
       margin: @dist-md;
       text-align: center;
+      background: #990100;
     	}
 	}
+
+  .container {
+    margin-top: @increment;
+  }
 }
 
 .container .yield {
-  margin: 0 (16px * @dppx);
+  margin-top: @increment;
   @media (min-width: 700px) {
     max-width: 690px;
-    margin: 0 auto;
+    margin: @increment auto;
   }
 }

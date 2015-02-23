@@ -9,6 +9,7 @@
     // private variables
 
     var playerCardsTemplate = Handlebars.compile($('#player-cards').html());
+    var playerMissionsTemplate = Handlebars.compile($('#player-cards-end').html());
 
     var $container, $overlay, containerRect, flipper;
 
@@ -74,7 +75,7 @@
             });
 
             $('.play .yield').empty().append(
-                playerCardsTemplate({ players: players })
+                playerCardsTemplate({ 'players': players })
             );
 
             $container = $('.play .player-cards');
@@ -85,7 +86,10 @@
         },
 
         end: function() {
-            // TODO render end
+
+            $('.end .yield').empty().append(
+                playerMissionsTemplate({ players: RK.Game.Players.playing })
+            );
 
             RK.Util.scrollToPage(3);
         },
