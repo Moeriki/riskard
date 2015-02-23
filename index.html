@@ -10,6 +10,7 @@
   <link rel="stylesheet/less" type="text/css" href="styles/pages.less" />
   <link rel="stylesheet/less" type="text/css" href="styles/start.less" />
   <link rel="stylesheet/less" type="text/css" href="styles/play.less" />
+  <link rel="stylesheet/less" type="text/css" href="styles/end.less" />
 </head>
 
 <body>
@@ -42,9 +43,10 @@
     --><div class="end">
       <div class="header">
         <div class="leftAction">
-          <img id="back_icon" src="assets/icon_140px_movie_play.png">
+          start anew
         </div>
       </div>
+      <div class="container yield"></div>
     </div>
 
   </div>
@@ -64,6 +66,14 @@
           <div class="front face boxxed">FRONT</div>
           <div class="back face boxxed">BACK</div>
         </li>
+      {{/each}}
+    </ul>
+  </template>
+
+  <template id="player-cards-end" type="text/x-handlebars-template">
+    <ul class="player-missions">
+      {{#each players}}
+        <li class="{{card.type}} boxxed"></li>
       {{/each}}
     </ul>
   </template>
