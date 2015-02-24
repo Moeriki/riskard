@@ -5,7 +5,13 @@
     width: device-width;
     text-align: center;
     vertical-align: middle;
+    line-height: 2 * @increment;
     padding: @dist-sm;
+    font-size: 1.5em;
+  }
+  .container .yield {
+    height: 100%;
+    margin: 0 auto @increment auto;
   }
 
   ul {
@@ -13,19 +19,15 @@
   }
 
   li {
-    line-height: 56px * @dppx;
+    line-height: 3 * @dist-lg;
     text-align: center;
-    padding: 8px * @dppx;
+    padding: @dist-sm;
     color: #e8e8e8;
     cursor: pointer;
   }
 
   li + li {
     border-top: 2px * @dppx solid;
-  }
-
-  h2 {
-    line-height: @increment; 
   }
 
 }

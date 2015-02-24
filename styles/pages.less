@@ -3,9 +3,7 @@
 body {
   width: 100vw;
   height: 100vh;
-
   overflow: hidden;
-
   background-color: #F6F6F6;
 }
 
@@ -14,8 +12,12 @@ h1 {
   font-size: @increment;
   font-variant: small-caps;
   color: #E8E8E8;
-  margin: (@increment + @dist-xl) 0 0 @increment;
-  position: fixed;
+  margin: 2 * @increment 0 0 2 * @increment;
+  position: absolute;
+}
+
+h2 {
+  color: #333333;
 }
 
 .pages {
@@ -33,7 +35,7 @@ h1 {
 
 .header {
   width: 100%;
-  background-color: #333;
+  background-color: #333333;
   height: 4 * @increment;
   padding: @dist-xl;
   box-shadow: 0 0 (2 * @dist-sm) 0;
@@ -67,9 +69,10 @@ h1 {
 }
 
 .container {
-  margin-top: @increment;
+  margin: @increment auto;
   @media (min-width: 700px) {
     max-width: 690px;
     margin: 0 auto;
   }
 }
+

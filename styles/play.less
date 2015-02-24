@@ -1,11 +1,11 @@
-@import '_variables';
+@import '_variables.less';
 
 .play {
 
   .container {
     -webkit-perspective: 1000;
     perspective: 1000;
-    margin-top: @increment;
+    margin-top: 2 * @increment;
     text-align: center;
   }
 
@@ -28,6 +28,10 @@
   }
 
   .player-cards {
+    ul {
+      width: 3 * @card-width + 6 * @dist-md;
+    }
+
     li {
       display: inline-block;
 
@@ -64,7 +68,7 @@
     height: 2 * @card-height;
 
     -webkit-transform: rotateY(180deg) scale(0.5);
-    -webkit-transform-origin: 128px 0;
+    -webkit-transform-origin: 154px 0;
     transform: rotateY(180deg) scale(0.5);
     transform-origin: 128px 0;
 

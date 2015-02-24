@@ -1,0 +1,86 @@
+@import '_variables';
+
+body {
+	background: #F6F6F6;
+	width: 100%;
+	height: 100%;
+}
+
+.header {
+	width: 100%;
+	height: 2 * @increment;
+	padding: @dist-md;
+}
+
+h1 {
+  	line-height: @increment;
+  	font-size: @increment;
+  	font-variant: small-caps;
+  	color: #E8E8E8;
+  	margin: @dist-md auto;
+  	text-align: center;
+  	position: relative;
+}
+
+.leftAction {
+	width: @dist-xl;
+  	height: @dist-xl;
+  	float: left;
+  	color: #E8E8E8;
+  	font-variant: small-caps;
+  	font-size: @increment / 2;
+  	cursor: pointer;
+  	margin: (2 * @dist-md) 0;
+}
+
+#back-icon {
+	width: @dist-xl;
+	height: @dist-xl;
+}
+
+#end_session {
+  	width: 1.2 * @dist-xl;
+  	height: @dist-xl;
+  	float: right;
+  	cursor: pointer;
+  	color: #E8E8E8;
+  	text-align: center;
+  	font-variant: small-caps;
+  	font-size: @increment/2;
+  	line-height: @dist-xl;
+  	margin: (2 * @dist-md) 0;
+}
+
+.container {
+	margin: 0 auto @increment auto;
+}
+
+.start {
+	h2 {
+		font-size: 1.5em;
+	}
+	ul {
+		margin-top: 0;
+	}
+	li {
+		height: 2*@dist-xl;
+		line-height: 2*@dist-xl;
+		font-size: 1.5em;
+	}
+}
+
+.play {
+	h1 {
+		visibility: hidden;
+	}
+}
+
+.end {
+	.leftAction {
+		width: 2 * @increment + @dist-sm;
+		margin: (2 * @dist-md) 0;
+	}
+}
+
+
+
