@@ -65,22 +65,33 @@
     <ul class="player-cards">
       {{#each players}}
         <li class="player-card boxxed">
-          <div class="front face boxxed">FRONT</div>
+          <div class="front face boxxed">
+            <div class="front-card-header">
+              <div class="front-card-header-text">Mission</div>
+            </div>
+            <div class="front-card-content">
+              <div class="front-card-content-player">Player 1</div>
+              <img src="assets/worldMap.png">
+              <div class="front-card-content-text">RISK</div>
+            </div>
+          </div>
+
+
           <div class="back face boxxed">
-            <div class="card-header">
-              <div class="edit-player-name">
+            <div class="back-card-header">
+              <div class="back-edit-player-name">
                 <img src="assets/edit.png">
               </div>
-              <div class="card-header-player">
+              <input type="text" class="back-card-header-player" placeholder="Player 1">
+              <!--<div class="back-card-header-player">
               Player 1
-              </div>
-              <div class="clear-player-name">
+              </div>-->
+              <div class="back-clear-player-name">
                 <img src="assets/clear.png">
               </div>
             </div>
-            <div class="card-content">
-              <img src="assets/worldMap.png">
-              <div class="card-content-text">RISK</div>
+            <div class="back-card-content">
+              <div class="back-card-content-hold">hold to view</div>
             </div>
           </div>
         </li>
