@@ -60,7 +60,7 @@
 
   .front {
     width: 100%;
-    background: #990100;
+    background: @red;
   }
 
   .back {
@@ -72,6 +72,72 @@
     transform: rotateY(180deg) scale(0.5);
     transform-origin: 128px 0;
 
-    background: #DBD1B4;
+    background: @background;
+  }
+
+  .card-header {
+    width: inherit;
+    height: 3 * @increment;
+    background: @grey;
+    border-radius: 5px 5px 0 0;
+    margin: 0 0 (1.5 * @increment) 0;
+
+    .edit-player-name {
+      width: @dist-xl;
+      height: @dist-xl;
+      margin: (@increment + @dist-md) 0 (@increment + @dist-md) @dist-md;
+      float: left;
+      display: inline-block;
+      vertical-align: middle;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .card-header-player {
+      width: ;
+      height: @dist-xl;
+      line-height: @dist-xl;
+      font-size: @dist-xl;
+      display: inline-block;
+      color: @font;
+      float: left;
+      margin: (@increment + @dist-md) 0 (@increment + @dist-md) @dist-md;
+    }
+
+    .clear-player-name {
+      width: 2*@dist-xl;
+      height: 2*@dist-xl;
+      margin: 72*@dppx @dist-md 72*@dppx 0;
+      display: inline-block;
+      float: right;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .card-content {
+    width: 95%;
+    position: relative;
+    margin: 0 auto;
+    img {
+      width: 100%;
+    }
+    .card-content-text {
+      width: inherit;
+      position: absolute;
+      left: 0;
+      top: 20%;
+      z-index: 100;
+      color: @red;
+      font-size: 8em;
+      font-weight: 900;
+      opacity: 0.8;
+    }
   }
 }
